@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { ToDoListContext } from "../App";
+import { useContext, useState } from "react";
+import { TodosListContext } from "../contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 export default function Input() {
-  const { setData } = useContext(ToDoListContext);
+  const { setData } = useContext(TodosListContext);
   const [inputValue, setInputValue] = useState("");
   function addNewTodo(title) {
     setData((data) => [
@@ -14,9 +14,9 @@ export default function Input() {
   }
   return (
     <div>
-      <h1 className="text-6xl">Todos</h1>
+      <h1 className="text-6xl my-5">Todos</h1>
       <form
-        className="flex items-center text-lg w-full  shadow-xl border p-3 rounded-full"
+        className="flex items-center text-lg w-full  shadow-xl border py-2 px-4 rounded-full"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

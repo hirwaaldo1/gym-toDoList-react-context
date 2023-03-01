@@ -1,13 +1,13 @@
+import { useContext, useState } from "react";
+import { TodosListContext } from "../contexts";
 import { faEdit, faSave, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useState } from "react";
-import { ToDoListContext } from "../App";
 
-function ListTodos({ title, id, deleteTodo }) {
+export default function Todo({ title, id, deleteTodo }) {
   const [isCheck, setIsCheck] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editValue, setEditValue] = useState(title);
-  const { setData, data } = useContext(ToDoListContext);
+  const { setData, data } = useContext(TodosListContext);
   function editDataValue() {
     let newData = data.map((item) => {
       if (item.id === id) {
@@ -26,7 +26,7 @@ function ListTodos({ title, id, deleteTodo }) {
       {isEdit ? (
         <div className="flex gap-10 items-center">
           <input
-            className="border-2 border-black"
+            className="border-2 border-black pt-1 pb-2 px-4 rounded-md"
             onChange={(e) => setEditValue(e.target.value)}
             value={editValue}
           />
@@ -56,21 +56,6 @@ function ListTodos({ title, id, deleteTodo }) {
           <FontAwesomeIcon icon={faEdit} />
         </button>
       </div>
-    </div>
-  );
-}
-export default function ToDoList() {
-  const { data, setData } = useContext(ToDoListContext);
-  function deleteTodo(id) {
-    let newValue = data.filter((item) => item.id !== id);
-    setData(newValue);
-  }
-  return (
-    <div>
-      {data?.length === 0 && <p className="text-2xl">No Todos</p>}
-      {data?.map((item, i) => {
-        return <ListTodos key={item.id} {...item} deleteTodo={deleteTodo} />;
-      })}
     </div>
   );
 }
