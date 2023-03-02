@@ -11,7 +11,7 @@ export default function Todo({ title, id }) {
       <div className="flex gap-2">
         <input type="checkbox" onClick={() => setIsCheck(!isCheck)} />
         <blockquote
-          className=" pt-1 pb-2 px-4 rounded-md"
+          className="pt-1 pb-2 px-4 rounded-md"
           contentEditable={true}
           suppressContentEditableWarning={true}
           onBlur={(e) => editDataValue(id, e.target.textContent)}
