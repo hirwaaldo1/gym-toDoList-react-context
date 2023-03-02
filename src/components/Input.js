@@ -3,15 +3,9 @@ import { TodosListContext } from "../contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 export default function Input() {
-  const { setData } = useContext(TodosListContext);
+  const { addNewTodo } = useContext(TodosListContext);
   const [inputValue, setInputValue] = useState("");
-  function addNewTodo(title) {
-    setData((data) => [
-      ...data,
-      { id: data[data.length - 1]?.id + 1 || 1, title: title },
-    ]);
-    setInputValue("");
-  }
+
   return (
     <div>
       <h1 className="text-6xl my-5">Todos</h1>
@@ -32,6 +26,7 @@ export default function Input() {
           onClick={() => {
             if (inputValue) {
               addNewTodo(inputValue);
+              setInputValue("");
             }
           }}
         >
