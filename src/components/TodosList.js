@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TodosListContext } from "../contexts";
+import { TodosListContext } from "../contexts/TodosList";
 import Todo from "./Todo";
 
 export default function TodosList() {
