@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
-export const TodosListContext = createContext([]);
+export const TodosListContext = createContext({});
 
 export default function TodosListContextProvider({ children }) {
   const [data, setData] = useState([]);
   function addNewTodo(title) {
     setData((data) => [
       ...data,
-      { id: data[data.length - 1]?.id + 1 || 1, title: title },
+      { id: data[data.length - 1]?.id + 1 || 1, title: title, isCheck: false },
     ]);
   }
   function editDataValue(id, editValue) {
@@ -25,7 +25,26 @@ export default function TodosListContextProvider({ children }) {
     let newValue = data.filter((item) => item.id !== id);
     setData(newValue);
   }
-  let value = { data, setData, addNewTodo, editDataValue, deleteTodo };
+  function checkTodo(id) {
+    let newData = data.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isCheck: !item.isCheck,
+        };
+      }
+      return item;
+    });
+    setData(newData);
+  }
+  let value = {
+    data,
+    setData,
+    addNewTodo,
+    editDataValue,
+    deleteTodo,
+    checkTodo,
+  };
   return (
     <TodosListContext.Provider value={value}>
       {children}

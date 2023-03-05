@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
-import { TodosListContext } from "../contexts";
+import { useContext } from "react";
+import { TodosListContext } from "../contexts/TodosList";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Todo({ title, id }) {
-  const { editDataValue, deleteTodo } = useContext(TodosListContext);
-  const [isCheck, setIsCheck] = useState(false);
+export default function Todo({ title, id, isCheck }) {
+  const { editDataValue, deleteTodo, checkTodo } = useContext(TodosListContext);
   return (
     <div className="flex justify-between items-center py-3 border-b">
       <div className="flex gap-2">
-        <input type="checkbox" onClick={() => setIsCheck(!isCheck)} />
+        <input type="checkbox" onClick={() => checkTodo(id)} />
         <blockquote
           className="pt-1 pb-2 px-4 rounded-md"
           contentEditable={true}
