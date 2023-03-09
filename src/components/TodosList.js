@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { TodosListContext } from "../contexts/TodosList";
+import { TodosContext } from "../contexts/TodosContext";
 import Todo from "./Todo";
 
 export default function TodosList() {
-  const { data } = useContext(TodosListContext);
+  const { data } = useContext(TodosContext);
 
   return (
     <div>

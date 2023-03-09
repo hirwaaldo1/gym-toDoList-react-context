@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { TodosListContext } from "../contexts/TodosList";
+import { TodosContext } from "../contexts/TodosContext";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Todo({ title, id, isCheck }) {
-  const { editDataValue, deleteTodo, checkTodo } = useContext(TodosListContext);
+  const { editDataValue, deleteTodo, checkTodo } = useContext(TodosContext);
   return (
     <div className="flex justify-between items-center py-3 border-b">
       <div className="flex gap-2">

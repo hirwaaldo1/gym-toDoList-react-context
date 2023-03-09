@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
-export const TodosListContext = createContext({});
+export const TodosContext = createContext({});
 
-export default function TodosListContextProvider({ children }) {
+export default function TodosContextProvider({ children }) {
   const [data, setData] = useState([]);
   function addNewTodo(title) {
     setData((data) => [
@@ -46,8 +46,6 @@ export default function TodosListContextProvider({ children }) {
     checkTodo,
   };
   return (
-    <TodosListContext.Provider value={value}>
-      {children}
-    </TodosListContext.Provider>
+    <TodosContext.Provider value={value}>{children}</TodosContext.Provider>
   );
 }
