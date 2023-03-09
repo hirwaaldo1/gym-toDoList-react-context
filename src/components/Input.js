@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { TodosListContext } from "../contexts/TodosList";
+import { TodosContext } from "../contexts/TodosContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 export default function Input() {
-  const { addNewTodo } = useContext(TodosListContext);
+  const { addNewTodo } = useContext(TodosContext);
   const [inputValue, setInputValue] = useState("");
 
   return (
